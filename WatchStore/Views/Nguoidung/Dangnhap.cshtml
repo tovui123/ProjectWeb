@@ -1,0 +1,118 @@
+﻿@model IEnumerable<WatchStore.Models.KHACHHANG>
+@{
+    ViewBag.Title = "Đăng nhập";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<style>
+    tr {
+        height: 60px;
+        font-size: 20px;
+    }
+
+    input {
+        width: 500px;
+    }
+
+    .button {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 16px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        -webkit-transition-duration: 0.4s; /* Safari */
+        transition-duration: 0.4s;
+        cursor: pointer;
+    }
+
+    .button1 {
+        background-color: white;
+        color: black;
+        border: 2px solid #4CAF50;
+    }
+
+        .button1:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+    .button2 {
+        background-color: white;
+        color: black;
+        border: 2px solid #008CBA;
+    }
+
+        .button2:hover {
+            background-color: #008CBA;
+            color: white;
+        }
+        li {
+             color: #9b59b6;
+         }
+</style>
+
+<div class="banner_inner">
+    <div class="services-breadcrumb">
+        <div class="inner_breadcrumb">
+
+            <ul class="short">
+                <li>
+                    @Html.ActionLink("Trang Chủ", "Index", "WatchStore")
+                    <i style="color:black">|</i>
+                    @Html.ActionLink("Đăng nhập tài khoản", "Dangnhap", "Nguoidung")
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+
+</div>
+<!--//banner -->
+
+<h2 style="text-align:center; color:#9b59b6;"> Đăng Nhập Tài Khoản </h2>
+<hr>
+<table align="center">
+
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        <tr>
+            <td>Tên đăng nhập:</td>
+            <td>
+
+                @Html.TextBox("TenDN")
+                @ViewData["Loi1"]
+            </td>
+        </tr>
+        <tr>
+            <td>Mật khẩu:</td>
+            <td>
+
+                @Html.Password("Matkhau")
+                @ViewData["Loi2"]
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input class="button button1 " type="submit" value="Đăng nhập" />
+            </td>
+
+        </tr>
+        <tr>
+
+            <td style="color:#e67e22"> Bạn chưa có tài khoản</td>
+
+            <td>
+                <button class="button button2">
+                    @Html.ActionLink("Đăng ký ngay ", "Dangky", "Nguoidung")
+                </button>
+            </td>
+        </tr>
+
+    }
+</table>
+<hr>

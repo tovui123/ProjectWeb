@@ -1,0 +1,137 @@
+﻿@using WatchStore.Models
+@{
+    ViewBag.Title = "Giỏ Hàng";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1;
+    }
+
+    th, td {
+        text-align: center;
+        font-weight: bold;
+        background-color: #f2f2f2;
+    }
+
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    th {
+        background-color: #4CAF50;
+        color: white;
+    }
+</style>
+
+<!-- banner -->
+<div class="banner_inner">
+    <div class="services-breadcrumb">
+        <div class="inner_breadcrumb">
+
+            <ul class="short">
+                <li>
+                    @Html.ActionLink("Trang Chủ", "Index", "WatchStore")
+                    <i style="color:black">|</i>
+                    @Html.ActionLink("Giỏ hàng", "GioHang", "Giohang")
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+</div>
+<!--//banner -->
+<section class="">
+
+    <h3 class="tittle-w3layouts my-lg-4 mt-3">Giỏ hàng </h3>
+
+    <table class="" align="center" border="1">
+        <thead>
+            <tr style="text-align:center; font-weight:bold">
+                <th>Mã sản phẩm</th>
+                <th>Tên sản phẩm</th>
+                <th>Ảnh sản phẩm</th>
+                <th>Số lượng</th>
+                <th>Đơn giá</th>
+                <th>Tổng tiền</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+
+                <tr>
+                    <td class="invert">@item.iMaDH</td>
+                    <td class="invert">@item.sTenDH</td>
+                    <td class="invert-image">
+                        <img src="~/Content/images/@item.sAnhbia" width="400" height="400">
+
+                    </td>
+                    <td class="invert">
+                        <div class="quantity">
+                            <div class="quantity-select">
+                                <div class="entry value-minus" style="color:black">&nbsp;</div>
+                                <div class="entry value">
+                                    <span>@item.iSoluong</span>
+                                </div>
+                                <div class="entry value-plus active" style=" color:black">&nbsp;</div>
+                            </div>
+                        </div>
+                    </td>
+
+
+
+                    <td class="invert">@String.Format("{0:0,0}", item.dDongia) VNĐ</td>
+                    <td class="invert">@String.Format("{0:0,0}", item.dThanhtien) VNĐ</td>
+
+
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</section>
+<hr />
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <h4>
+                Số lượng sản phẩm :
+                <span>@ViewBag.Tongsoluong Sản phẩm </span>
+            </h4>
+            <hr />
+            @foreach (var item in Model)
+            {
+
+                <h4>
+                    @item.sTenDH
+                    <i> | </i>
+                    <span> Số lượng:@item.iSoluong </span>
+                    <i> | </i>
+                    <span> @String.Format("{0:0,0}", item.dThanhtien) VNĐ </span>
+
+                </h4>
+
+            }
+            <hr />
+            <h4>
+                Tổng tiền phải thanh toán :
+                <span>@String.Format("{0:0,0}", ViewBag.Tongtien) VNĐ</span>
+            </h4>
+
+        </div>
+        <div class="col-md-3">
+            <a href="#" class="btn btn-lg animated-button gibson-three mt-4" style=" color:black; border-radius:10px;  width: 300px;
+     height: 100px; text-align:center">
+                Thanh toán
+            </a>
+        </div>
+       
+    </div>
+    </div>
+    <!--//checkout-->
+    <hr />
