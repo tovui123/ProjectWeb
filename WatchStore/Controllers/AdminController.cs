@@ -9,6 +9,10 @@ namespace WatchStore.Controllers
     public class AdminController : Controller
     {
         // GET: Admin
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Index()
         {
             return View();
